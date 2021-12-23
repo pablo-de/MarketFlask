@@ -13,7 +13,7 @@ def home_page():
     return render_template('home.html')
 
 
-@app.route("/market")
+@app.route('/market')
 @login_required
 def market_page():
     items = Item.query.all()
@@ -29,10 +29,10 @@ def register_page():
                               password=form.password1.data)
         db.session.add(user_to_create)
         db.session.commit()
-        
+
         login_user(user_to_create)
         flash('Cuenta creada exitosamente, bienvenido. ', category='success')
-        
+
         return redirect(url_for('market_page'))
 
     if form.errors != {}:
